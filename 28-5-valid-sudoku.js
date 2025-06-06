@@ -87,21 +87,32 @@ function hasNoConflicts(b) {
       if (b[r][c] !== 0 && rowSets[r].has(b[r][c])) {
         return false;
       }
-      rowSets[r].add(b[r][c]);
+      if (b[r][c] != 0) rowSets[r].add(b[r][c]);
 
       if (b[r][c] !== 0 && colSets[c].has(b[r][c])) {
         return false;
       }
-      colSets[c].add(b[r][c]);
+      if (b[r][c] != 0) colSets[c].add(b[r][c]);
 
       if (b[r][c] !== 0 && subgridSets[((r/3 | 0) * 3) + (c/3 | 0)].has(b[r][c])) {
         return false;
       }
-      subgridSets[((r/3 | 0) * 3) + (c/3 | 0)].add(b[r][c]);
+      if (b[r][c] != 0) subgridSets[((r/3 | 0) * 3) + (c/3 | 0)].add(b[r][c]);
     }
   }
   return true;
 }
+
+/*
+Complexity:
+Space: O(n), where n is the 81 values in the 9 x 9 grid.
+We create 3 groups of 9 sets of integers, representing the 9 rows, 9 columns,
+and 9 subgrid in the puzzle.  Worst case, if every value is filled in and the 
+board is valid, each of the 27 sets will contain 9 unique values, never any more.
+In addition, we track the current row and column being inspected.
+Time: O(n).
+We process 9 rows, with 9 columns nested inside, with 3 subgroups checked inside.  Worst case, when the board is valid, all n * 3 => O(3n) => O(n) checks are done, never any more, and often less if an invalid duplicate is found.
+*/
 
 let b1 = [
   [5, 0, 0, 0, 0, 0, 0, 0, 6],
