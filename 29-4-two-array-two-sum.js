@@ -72,8 +72,9 @@ function twoArrayTwoSum(sArr, unsArr) {
 Complexity:
 Space: O(1).
 The only extra space we use is constant-space integer pointers for the binary search => O(1).
-Time: O(N log N).
-Worst case, we need to iterate through each item in the unsorted array, do a binary search each time trying to find the complement => N * log N worst case => O(N log N).
+Time: O(N1 log N2), where N1 is the length of the unsorted array, and N2 is the length of the sorted array.
+Worst case, we need to iterate through N1 items in the unsorted array, and do a binary search each time in the N2 items of the
+sorted array, trying to find the complement => N * log N worst case => O(N log N).
 */
 
 console.log(twoArrayTwoSum(
