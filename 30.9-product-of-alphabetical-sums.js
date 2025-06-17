@@ -26,15 +26,13 @@
 /*
 Design:
 Similar to solution for three-sum problem.
-For each word, compute its alpha sum.
+For each word
+  Compute its alpha sum
   If its alpha sum is an integer divisor of the target
-    For each word, compute compute its alpha sum
+    For each word, compute its alpha sum
       If its alpha sum is an integer divisor of the target
         Put the product of the two words into a Set (since we are only returning true or false, and we can use words more than once, we don't need to remember the words or their locations, or how many times we've used them, so a Set will suffice).
-For each word
-  Compute the dividend of target / word
-  If the dividend is an integer and is in the Set
-    return true
+        If target / product is in the Set, we've found what we want, return true
 Return false
 */
 
@@ -50,25 +48,20 @@ function prodOfAlphaSums(words, target) {
 
   let as1 = undefined;
   let as2 = undefined;
-  let multipliers1 = new Set();
-  let multipliers2 = new Set();
+  let twoProducts = new Set();
   for (let word1 of words) {
     as1 = alphaSum(word1);
     if (Number.isInteger(target / as1)) {
-      multipliers1.add(as1);
       for (let word2 of words) {
         as2 = alphaSum(word2);
+        let twoProduct = as1 * as2;
         if (Number.isInteger(target / as2)) {
-          console.log('as1, as2: ', as1, as2);
-          multipliers2.add(as1 * as2);
+          twoProducts.add(twoProduct);
+        }
+        if (twoProducts.has(target / twoProduct)) {
+          return true;
         }
       }
-    }
-  }
-
-  for (let as of multipliers1) {
-    if (multipliers2.has(target / as)) {
-      return true;
     }
   }
 
@@ -82,7 +75,7 @@ console.log(prodOfAlphaSums(['a', 'b'], 7));
 /*
 Complexity:
 Space: O(N), where N is the number of words in the array.
-We need 2 sets, that worst case are size N, and a few summing variables that are constant space => O(N * 2) + O(1) => O(N).
-Time: O(N**3 * M) worst case, where N is the number of words, and M is the average number of letters per word.
-We have 2 nested loops that iterate over very word in the array O(N**2), and another loop through which the each word is compared to the two-product that we did earlier.  
+We need a Set, that worst case is size N, and a few summing variables that are constant space => O(N) + O(1) => O(N).
+Time: O(N**2) worst case, where N is the number of words, and M is the average number of letters per word.
+We have 2 nested loops that iterate over very word in the array => O(N**2).
 */
