@@ -71,6 +71,8 @@ function prodOfAlphaSums(words, target) {
 console.log(prodOfAlphaSums(["abc", "fg", "hij", "klm", "nop", "qrs", "vwx"], 1620));
 console.log(prodOfAlphaSums(['a', 'b'], 2));
 console.log(prodOfAlphaSums(['a', 'b'], 7));
+console.log(prodOfAlphaSums(['a', 'b', 'c'], 6));
+console.log(prodOfAlphaSums(['a', 'b', 'c'], 7));
 
 /*
 Complexity:
