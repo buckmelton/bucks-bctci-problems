@@ -1,80 +1,106 @@
-// # Merge Two Sorted Arrays
+// # Hangman Word Matching
 
-// Given two sorted arrays of integers, `arr1` and `arr2`, return a new array that contains all the elements in `arr1` and `arr2` in sorted order, including duplicates.
+// You're given:
+
+// 1. An array of valid words.
+// 2. A pattern string that represents a partially revealed word (e.g., "H _ N G _ _").
+//    - Each known letter appears in its exact position.
+//    - Each unknown position is indicated by an underscore ('_').
+// 3. A set of incorrectly guessed letters that you already know are not in the word.
+
+// Goal: Determine how many words from the valid words list could still be the secret word based on:
+
+// - The pattern's known letters (they must match exactly in the same positions).
+// - The underscores (unknown letters can be anything except the letters you know are incorrect).
+// - The set of letters that are known to be incorrect (none of these letters should appear in any position).
+
+// Return the count of valid words that match the given Hangman state.
 
 // ```
 // Example 1:
-// Input: 
-// arr1 = [1, 3, 4, 5]
-// arr2 = [2, 4, 4]
-// Output: [1, 2, 3, 4, 4, 4, 5]
-// Explanation: All elements are merged in sorted order.
+// Input: valid_words = ["cat", "dog", "rat"], pattern = "c_t", incorrect_guesses = ["o", "g"]
+// Output: 1
+// Explanation: Only "cat" matches the pattern and doesn't contain any incorrect guesses.
 
 // Example 2:
-// Input:
-// arr1 = [-1]
-// arr2 = []
-// Output: [-1]
-// Explanation: When one array is empty, the result is just the other array.
+// Input: valid_words = ["cat", "dog", "rat"], pattern = "c_t", incorrect_guesses = ["a"]
+// Output: 0
+// Explanation: While "cat" matches the pattern, it contains 'a' which is known to be incorrect.
 
 // Example 3:
-// Input:
-// arr1 = [1, 3, 5]
-// arr2 = [2, 4, 6]
-// Output: [1, 2, 3, 4, 5, 6]
+// Input: valid_words = [], pattern = "c_t", incorrect_guesses = ["a"]
+// Output: 0
+// Explanation: With no valid words, no matches are possible.
 // ```
 
 // Constraints:
-// - arr1 and arr2 are sorted in ascending order
-// - 0 ≤ arr1.length, arr2.length ≤ 10^6
-// - -10^9 ≤ arr1[i], arr2[i] ≤ 10^9
 
-function mergeArrays(arr1, arr2) {
-  const res = [];
-  let ptr1 = 0;
-  let ptr2 = 0;
-  while (ptr1 < arr1.length && ptr2 < arr2.length) {
-    if (arr1[ptr1] <= arr2[ptr2]) {
-      res.push(arr1[ptr1]);
-      ptr1++;
-    } else {
-      res.push(arr2[ptr2]);
-      ptr2++;
+// - The length of `valid_words` is at most 10^4
+// - Each word in `valid_words` has length at most 100
+// - All characters in `words` and `pattern` are lowercase English letters
+// - The `pattern` contains only letters and underscores
+// - `incorrect_guesses` contains only letters
+
+function hangmanMatch(validWords, pattern, incorrectGuesses) {
+  let matchingWords = 0;
+  const incGuessSet = new Set(incorrectGuesses);
+  for (let word of validWords) {
+    if (word.length == pattern.length) {
+      let i = 0;
+      while (i < word.length && i < pattern.length) {
+        if (word[i] !== pattern[i]) {
+          if (pattern[i] !== '_' || incGuessSet.has(word[i])) {
+            break;
+          }
+        }
+        i++;
+      }
+      if (i == word.length && i == pattern.length) matchingWords++;
     }
   }
-  if (ptr1 < arr1.length) {
-    for ( ; ptr1 < arr1.length; ptr1++) {
-      res.push(arr1[ptr1]);
-    }
-  } else {
-    for ( ; ptr2 < arr2.length; ptr2++) {
-      res.push(arr2[ptr2]);
-    }
-  }
-  return res;
+  return matchingWords;
 }
 
 /* 
 Complexity:
-Time: O(N+M) where N is the size of arr1 and M is the size of arr2.
-We process each element of each array one time, performing a simple test and then a simple push onto the end of the array stack =>O(N+M).
-Space: O(N+M).
-We create a result array that has exactly N+M elements, and two constant-sized integer pointer variables.
+Time: O(N*M) where N is the number of valid words, and M is the number of letters in the pattern.
+We process each of the N valid words once, and for each valid word we inspect, worst case, the M number of letters in the pattern. => O(N*M).
+Space: O(1).
+We have two constant-space integer variables, the loop variable i and the result variable matchingWords. => O(1).
 */
 
-let arr1 = [1, 3, 4, 5];
-let arr2 = [2, 4, 4];
-console.log(mergeArrays(arr1, arr2));
+let validWords1 = ['cat', 'dog', 'rat'];
+let pattern1 = 'c_t';
+let incorrectGuesses1 = ['o', 'g'];
+console.log(hangmanMatch(validWords1, pattern1, incorrectGuesses1));
 
-let arr3 = [-1];
-let arr4 = [];
-console.log(mergeArrays(arr3, arr4));
+let validWords2 = ['cat', 'dog', 'rat'];
+let pattern2 = 'c_t';
+let incorrectGuesses2 = ['a'];
+console.log(hangmanMatch(validWords2, pattern2, incorrectGuesses2));
 
-let arr5 = [1, 3, 5];
-let arr6 = [2, 4, 6];
-console.log(mergeArrays(arr5, arr6));
+let validWords3 = [];
+let pattern3 = 'c_t';
+let incorrectGuesses3 = ['a'];
+console.log(hangmanMatch(validWords3, pattern3, incorrectGuesses3));
 
-let arr7 = [-100, -50, 4, 5, 9, 100];
-let arr8 = [-200, -88, -77, -66, 4, 4, 6];
-console.log(mergeArrays(arr7, arr8));
+let validWords4 = ['crane', 'brake', 'brain', 'trace', 'place', 'draft', 'drake', 'grape', 'grate'];
+let pattern4 = '_ra_e';
+let incorrectGuesses4 = ['t', 'd'];
+console.log(hangmanMatch(validWords4, pattern4, incorrectGuesses4));
+
+let validWords5 = ['crane', 'brake', 'brain', 'trace', 'place', 'draft', 'drake', 'grape', 'grate'];
+let pattern5 = '______';
+let incorrectGuesses5 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+console.log(hangmanMatch(validWords5, pattern5, incorrectGuesses5));
+
+let validWords6 = ['cranes', 'braked', 'brainteaser', 'tracers', 'placemats', 'drafting', 'drakes', 'grapes', 'graters'];
+let pattern6 = '_ra_e';
+let incorrectGuesses6 = ['t', 'd'];
+console.log(hangmanMatch(validWords6, pattern6, incorrectGuesses6));
+
+let validWords7 = ['crane', 'brake', 'brain', 'trace', 'place', 'draft', 'drake', 'grape', 'grate'];
+let pattern7 = '_ra_e';
+let incorrectGuesses7 = [];
+console.log(hangmanMatch(validWords7, pattern7, incorrectGuesses7));
 
