@@ -21,6 +21,9 @@ Finally, sum over the array to find the total.  The last two steps can be combin
 Time complexity: we go through the string once, then the array of non-'a' substring lengths once to calculate number of sub-substrings,
 then the array of sub-substring totals once to sum them all.  O(3n) => O(n)
 
+Optimization: I could accumulate the number of non-'a' substrings as I go, instead of saving off the substring lengths in
+an array to be computed over later.
+
 Space complexity: we create an O(n) array of substring lengths, an O(n) array of number of sub-substrings,
 and an O(1) total of the numbers.  O(n) + O(n) + O(1) => O(n).
 */
