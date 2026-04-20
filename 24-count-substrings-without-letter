@@ -1,0 +1,49 @@
+// # Count Substrings Without Letter
+
+// Given a string, `s`, count the number of non-empty substrings of `s` that do not contain the letter 'a'.
+
+// Example: "bcadefa"
+// Output: 9. The 9 substrings without 'a' are: "b", "c", "bc", "d", "e", "f", "de", "ef", and "def".
+
+// Constraints:
+
+// - `0 <= s.length <= 10^5`
+// - `s` consists of lowercase English letters only
+
+/*
+Idea:
+Go through each letter of the string, when you find an 'a', save off length of the previous non-'a' substring
+into an array of non-'a' substing lengths.
+When you reach the end of the string, take the array of non-'a' substring lengths and map it to an array of the
+number of substrings you can create from each of those non-'a' substrings (which should be a simple arithmetic formula).
+Finally, sum over the array to find the total.  The last two steps can be combined into one 'collect'.
+
+Time complexity: we go through the string once, then the array of non-'a' substring lengths once to calculate number of sub-substrings,
+then the array of sub-substring totals once to sum them all.  O(3n) => O(n)
+
+Space complexity: we create an O(n) array of substring lengths, an O(n) array of number of sub-substrings,
+and an O(1) total of the numbers.  O(n) + O(n) + O(1) => O(n).
+*/
+
+function numSubstringsWithoutLetter(s, a) {
+  let subStrLens = [];
+  let subStrStart = 0;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === a) {
+      subStrLens.push( i-subStrStart );
+      subStrStart = i + 1;
+    }
+  }
+  subStrLens.push(s.length-subStrStart);
+
+  // at this point, we should have an array of all the lengths of substrings
+  // of the original string that don't contain 'a'
+
+  return subStrLens.reduce((acc, cur) => acc + (cur * (cur + 1))/2, 0);
+}
+
+console.log(numSubstringsWithoutLetter('bcadefa', 'a'));
+console.log(numSubstringsWithoutLetter('bcadef', 'a'));
+console.log(numSubstringsWithoutLetter('', 'a'));
+console.log(numSubstringsWithoutLetter('bcdef','a'));
+console.log(numSubstringsWithoutLetter('aaaaaaaa', 'a'));
