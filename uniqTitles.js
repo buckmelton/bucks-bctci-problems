@@ -33,3 +33,15 @@ function uniqTitles(titles) {
   }
   return [...titleSet];
 }
+
+let titles = ["trOn", "Star Wars-A New Hope", "Tron", "Tron: Remastered", "The Matrix", "tron", "The Matrix: Director's Cut"];
+console.log(uniqTitles(titles));
+
+titles = [];
+console.log(uniqTitles(titles));
+
+titles = ["A", "B", "C"];
+console.log(uniqTitles(titles));
+
+titles = [':', '', ':hjhjkhjkhjk', ':jkl:jkl:'];
+console.log(uniqTitles(titles));
