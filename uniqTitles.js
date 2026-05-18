@@ -25,3 +25,11 @@
 // - Each title contains only alphanumeric characters, spaces, hyphens, and colons.
 // - Each title has length at most `100`.
 
+function uniqTitles(titles) {
+  const titleSet = new Set();
+  for (let title of titles) {
+    let uniqTitle = title.replace(/:.*$/, '').toLowerCase();
+    titleSet.add(uniqTitle);
+  }
+  return [...titleSet];
+}
