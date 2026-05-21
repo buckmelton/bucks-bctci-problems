@@ -60,3 +60,36 @@ function isMatrixSymmetric(m) {
   return true;
 }
 
+et matrix = [
+  [1, 2, 3],
+  [2, 4, 5],
+  [3, 5, 6]
+]
+console.log(isMatrixSymmetric(matrix));
+
+matrix = [
+  [1, 2],
+  [3, 4]
+];
+console.log(isMatrixSymmetric(matrix));
+
+matrix = [
+  [5]
+];
+console.log(isMatrixSymmetric(matrix));
+
+matrix = [
+];
+console.log(isMatrixSymmetric(matrix));
+
+matrix = [
+  []
+];
+console.log(isMatrixSymmetric(matrix));
+
+matrix = [
+  [1,2,3],
+  [2,3,1]
+];
+console.log(isMatrixSymmetric(matrix));
+
