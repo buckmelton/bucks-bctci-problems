@@ -44,3 +44,19 @@ We need to go through half of an N x N matrix = 0.5 * N * N => O(N^2)
 Space complexity:
 We only need to track the current R an C we're on => O(1)
 */
+
+function isMatrixSymmetric(m) {
+  if (m.length == 0) return false;
+  if (m.length != m[0].length) return false;
+  if (m.length == 1) return true;
+  let numCols = m[0].length;
+  for (let r = 0; r < m.length-1; r++) {
+    for (let c = r+1; c < numCols; c++) {
+      if (m[r][c] != m[c][r]) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
