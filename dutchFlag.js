@@ -18,6 +18,10 @@
 // Idea: use frequency counts to count up how many red, white and blue elements
 // there are, then go back through array and simply overwrite array with the correct
 // number of red, then white, then blue elements
+
+// Time complexity: You go through the array twice, so 2*n => O(n).
+// Space complexity: you need 3 counting variables, one for each color, either individual or in a hash => O(1)
+
 function dutchFlag(arr) {
   const freqs = { R : 0,
                  W : 0,
