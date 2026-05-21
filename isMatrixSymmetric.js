@@ -31,3 +31,16 @@
 // - `0 <= matrix.length <= 100`
 // - `0 <= matrix[i].length <= 100`
 // - `-10^4 <= matrix[i][j] <= 10^4`
+
+/* Idea:
+If the matrick is empty, return false
+If the matrix is not square, return false
+Go through each [R,C] element above the diagnonal and compare it to [C,R]
+  If they aren't equal, return false
+Return true
+
+Time complexity:
+We need to go through half of an N x N matrix = 0.5 * N * N => O(N^2)
+Space complexity:
+We only need to track the current R an C we're on => O(1)
+*/
