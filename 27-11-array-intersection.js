@@ -50,6 +50,13 @@ function arrayIntersection(arr1, arr2) {
   return result;
 }
 
+/*
+Time complexity:
+The arrays may be very different lengths, M (shorter) and N (longer).  Worst case, if all elements of shorter array M are at the end of array N, all elements of both arrays will be processed => O(M + N).
+Space complexity:
+We use two constant-space pointer variables, and we create a result array that worst case is the length of the shortest array => O(2 * 1) + O(M) => O(M).
+*/
+
 let arr1 = [1, 2, 3];
 let arr2 = [1, 3, 5];
 console.log(arrayIntersection(arr1, arr2));
