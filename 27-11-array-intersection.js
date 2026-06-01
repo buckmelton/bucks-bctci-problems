@@ -50,3 +50,23 @@ function arrayIntersection(arr1, arr2) {
   return result;
 }
 
+let arr1 = [1, 2, 3];
+let arr2 = [1, 3, 5];
+console.log(arrayIntersection(arr1, arr2));
+
+arr1 = [1, 1, 1];
+arr2 = [1, 1];
+console.log(arrayIntersection(arr1, arr2));
+
+arr1 = [1, 2, 2, 3];
+arr2 = [];
+console.log(arrayIntersection(arr1, arr2));
+
+arr1 = [1, 2, 2, 3];
+arr2 = [1, 2];
+console.log(arrayIntersection(arr1, arr2));
+
+arr1 = [1, 2, 2, 3];
+arr2 = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+console.log(arrayIntersection(arr1, arr2));
+
