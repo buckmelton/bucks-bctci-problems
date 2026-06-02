@@ -30,6 +30,14 @@ function arrayReverse(arr) {
   return arr;
 }
 
+/*
+Complexity:
+
+We go through the loop N / 2 times, so time complexity is O(N / 2) => O(N).
+
+For space complexity, we only create the two constant-sized pointers, so space complexity is O(1).
+*/
+
 let arr = ['h', 'e', 'l', 'l', 'o'];
 console.log(arrayReverse(arr));
 
