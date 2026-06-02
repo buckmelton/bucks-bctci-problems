@@ -19,3 +19,14 @@
 // - `0 ≤ arr.length ≤ 10^5`
 // - `arr` contains only letters
 
+function arrayReverse(arr) {
+  let l = 0;
+  let r = arr.length-1;
+  while (l < r) {
+    [arr[l], arr[r]] = [arr[r], arr[l]];
+    l++;
+    r--;
+  }
+  return arr;
+}
+
