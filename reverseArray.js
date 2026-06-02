@@ -30,3 +30,18 @@ function arrayReverse(arr) {
   return arr;
 }
 
+let arr = ['h', 'e', 'l', 'l', 'o'];
+console.log(arrayReverse(arr));
+
+arr = ['a'];
+console.log(arrayReverse(arr));
+
+arr = [];
+console.log(arrayReverse(arr));
+
+arr = ['h', 'e'];
+console.log(arrayReverse(arr));
+
+arr = ['a', 'n', 'c', 'i', 'e', 'n', 't', 's' ];
+console.log(arrayReverse(arr));
+
