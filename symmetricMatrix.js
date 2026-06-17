@@ -52,6 +52,13 @@ function symmetricMatrix(m) {
   return true;
 }
 
+/* Complexity:
+Time complexity: 
+If the matrix is N x N, we process (N * N) - N elements => O(N^2).
+Space complexity:
+The only extra space we use is for two loop indices, O(1).
+*/
+
 let matrix = [
   [1, 2, 3],
   [2, 4, 5],
