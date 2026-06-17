@@ -38,3 +38,16 @@ the diagonal and see if they equal their mirror counterpart.  (The elements on t
 remain the same in the transpose and so are by definition equal, so we don't need to check
 them.
 */
+
+function symmetricMatrix(m) {
+  if (m.length == 0) return true;
+  if (m.length != m[0].length) return false;
+  for (let r = 0; r < m.length - 1; r++) {
+    for (let c = r+1; c < m[0].length; c++) {
+      if (m[r][c] != m[c][r]) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
