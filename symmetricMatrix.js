@@ -31,3 +31,10 @@
 // - `0 <= matrix.length <= 100`
 // - `0 <= matrix[i].length <= 100`
 // - `-10^4 <= matrix[i][j] <= 10^4`
+
+/*
+Idea: To discover if a matrix is symmetric, you only need to go through the elements above
+the diagonal and see if they equal their mirror counterpart.  (The elements on the diagonal
+remain the same in the transpose and so are by definition equal, so we don't need to check
+them.
+*/
