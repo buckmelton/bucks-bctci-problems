@@ -51,3 +51,34 @@ function symmetricMatrix(m) {
   }
   return true;
 }
+
+let matrix = [
+  [1, 2, 3],
+  [2, 4, 5],
+  [3, 5, 6]
+];
+
+console.log(symmetricMatrix(matrix));
+
+matrix = [
+  [1, 2],
+  [3, 4]
+];
+
+console.log(symmetricMatrix(matrix));
+
+matrix = [
+  [5]
+];
+
+console.log(symmetricMatrix(matrix));
+
+matrix = [];
+
+console.log(symmetricMatrix(matrix));
+
+matrix = [[]];
+
+console.log(symmetricMatrix(matrix));
+
+
