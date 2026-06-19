@@ -19,3 +19,17 @@
 
 # - `1 <= n <= 1000` where `n` is the size of the square matrix
 # - `-10^9 <= mat[i][j] <= 10^9` (matrix elements are integers)
+
+def rotate_clockwise m
+  return m if m.length == 0
+  for r in 0..m.length-1 do
+    for c in r+1..m[0].length-1 do
+      m[r][c], m[c][r] = m[c][r], m[r][c]
+    end
+  end
+  for r in 0..m.length-1 do
+    m[r].reverse!
+  end
+  m
+end
+
