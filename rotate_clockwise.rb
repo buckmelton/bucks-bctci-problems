@@ -33,3 +33,11 @@ def rotate_clockwise m
   m
 end
 
+# Complexity:
+# Time: In the first for loop, we go through every element
+# above the diagonal = N^2 / 2, and in the 2nd for loop, the code processes each row, and the #reverse method presumably touches
+#   each element in the row, which is N^2, so overall O(N^2)
+# Space: We only use row and column indices, so O(1).
+
+
+
