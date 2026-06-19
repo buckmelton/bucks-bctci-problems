@@ -39,5 +39,29 @@ end
 #   each element in the row, which is N^2, so overall O(N^2)
 # Space: We only use row and column indices, so O(1).
 
+mat =  [[25, 15],
+        [10, 30]]
+
+# Output:    mat = [[10, 25],
+#                  [30, 15]]
+
+p rotate_clockwise mat
+
+mat = [[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]]
+
+p rotate_clockwise mat
+
+mat = []
+p rotate_clockwise mat
+
+mat = [[]]
+p rotate_clockwise mat
+
+mat = [[4]]
+p rotate_clockwise mat
+
+
 
 
