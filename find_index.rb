@@ -36,6 +36,12 @@ def find_index(s, t)
   return -1
 end
 
+=begin
+Complexity:
+Time: Where S is the length of s and T is the length of t, worst case, we go almost through almost all S letters, and inspect T letters each time => O(S * T).
+Space: The only extra space we use is string indices => O(1)
+=end
+
 s = "hello world"
 t = "world"
 p find_index(s, t)
