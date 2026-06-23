@@ -31,3 +31,23 @@ function findIndex(s, t) {
   }
   return -1;
 }
+
+let s = "hello world";
+let t = "world";
+console.log(findIndex(s, t));
+
+s = "needle in a haystack";
+t = "needle";
+console.log(findIndex(s, t));
+
+s = "needle in a haystack";
+t = "not";
+console.log(findIndex(s, t));
+
+s = "hello world";
+t = "";
+console.log(findIndex(s, t));
+
+s = "";
+t = "world";
+console.log(findIndex(s, t));
