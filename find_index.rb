@@ -18,3 +18,20 @@
 # - The length of `t` is at most `10^5`
 # - `t` can be empty, in which case return `0`
 # - `s` can be empty, in which case return `-1` if `t` is non-empty, `0` if `t` is empty
+
+def find_index(s, t)
+  return 0 if t.length == 0
+  return -1 if s.length == 0
+  for si in 0..s.length - t.length do
+    if s[si] == t[0]
+      ti = 1
+      while ti < t.length && t[ti] == s[si+ti]
+        ti += 1
+      end
+      if ti == t.length
+        return si
+      end
+    end
+  end
+  return -1
+end
