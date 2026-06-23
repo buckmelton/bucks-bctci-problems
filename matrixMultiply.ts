@@ -57,3 +57,31 @@
 // - `0 <= A.length, B.length <= 100`
 // - `0 <= A[i].length, B[i].length <= 100`
 // - `-10^4 <= A[i][j], B[i][j] <= 10^4`
+
+function colArr(m: number[][], c: number): number[] {
+  let res: number[] = [];
+  for (let r = 0; r < m.length; r++) {
+    res.push(m[r][c]);
+  }
+  return res;
+}
+
+function dotProduct(arr1: number[], arr2: number[]): number {
+  let res = 0;
+  for (let i = 0; i < arr1.length; i++) {
+    res += arr1[i] * arr2[i];
+  }
+  return res;
+}
+
+function matrixMultiply(a: number[][], b: number[][]): number[][] {
+  if (a.length == 0 || b.length == 0) return [];
+  if (a[0].length != b.length) return [];
+  let res = Array.from({length: a.length }, () => Array(b[0].length));
+  for (let r = 0; r < res.length; r++) {
+    for(let c = 0; c < res[0].length; c++) {
+      res[r][c] = dotProduct(a[r], colArr(b, c));
+    }
+  }
+  return res;
+}
