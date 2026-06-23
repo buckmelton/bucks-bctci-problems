@@ -85,3 +85,41 @@ function matrixMultiply(a: number[][], b: number[][]): number[][] {
   }
   return res;
 }
+
+let A = [
+  [1, 2],
+  [3, 4]
+];
+
+let B = [
+  [5, 6],
+  [7, 8]
+];
+
+console.log(matrixMultiply(A, B));
+
+A = [
+  [1, 2, 3]
+];
+
+B = [
+  [4],
+  [5],
+  [6]
+];
+
+console.log(matrixMultiply(A, B));
+
+A = [
+  [1, 2]
+];
+
+B = [
+  [1],
+  [2],
+  [3]
+];
+
+console.log(matrixMultiply(A, B));
+
+
