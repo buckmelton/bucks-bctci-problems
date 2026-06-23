@@ -35,3 +35,25 @@ def find_index(s, t)
   end
   return -1
 end
+
+s = "hello world"
+t = "world"
+p find_index(s, t)
+
+s = "needle in a haystack"
+t = "needle"
+p find_index(s, t)
+
+s = "needle in a haystack"
+t = "not"
+p find_index(s, t)
+
+s = "hello world"
+t = ""
+p find_index(s, t)
+
+s = ""
+t = "world"
+p find_index(s, t)
+
+
