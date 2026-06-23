@@ -45,3 +45,69 @@
 // - `2 <= board.length <= 100`
 // - `board.length == board[i].length`
 // - `board[i][j]` is either `'X'`, `'O'`, or `' '`
+
+function validTicTacToeBoard(b) {
+  // Go through all elements and count up number of X's and O's.
+  let x = 0;
+  let o = 0;
+  for (let r=0; r<b.length; r++) {
+    for (let c=0; c<b[0].length; c++) {
+      if (b[r][c] === 'X') {
+        x++;
+      } else {
+        if (b[r][c] === 'O') {
+          o++;
+        }
+      }
+    }
+  }
+
+  // There must be either an equal number of X's and O's or 1 more X than
+  if (!(x == o || x == o+1)) {
+    return false;
+  }
+
+  // Need to track separately, since a valid board may have two wins
+  // by the same player if their last move was at the intersection
+  // of two winning rows/columns/diagonals.  But a board can't have 1
+  // win by X and 1 win by O.
+  let xWon = 0;
+  let oWon = 0;
+
+  // Check rows
+  for (let r=0; r<b.length; r++) {
+    if (b[r].every(elt => elt === 'X')) xWon++;
+    if (b[r].every(elt => elt === 'O')) oWon++;
+  }
+
+  // Check columns
+  for (let c=0; c<b[0].length; c++) {
+    let colArr = [];
+    for (let r=0; r<b.length; r++) {
+      colArr.push(b[r][c]);
+    }
+    if (colArr.every(elt => elt === 'X')) xWon++;
+    if (colArr.every(elt => elt === 'O')) oWon++;
+  }
+
+  // Check tl-br diagonal
+  let diagArr = [];
+  for (let r=0; r<b.length; r++) {
+    diagArr.push(b[r][r]);
+  }
+  if (diagArr.every(elt => elt === 'X')) xWon++;
+  if (diagArr.every(elt => elt === 'O')) oWon++;
+
+  // Check bl-tr diagonal
+  diagArr = [];
+  for (let r=b.length-1; r>=0; r--) {
+    diagArr.push(b[r][b.length-1-r]);
+  }
+  if (diagArr.every(elt => elt === 'X')) xWon++;
+  if (diagArr.every(elt => elt === 'O')) oWon++;
+
+  if (((xWon <= 2 && oWon == 0) && (x == o+1)) ||
+      ((oWon <= 2 && xWon == 0) && (x == o))) return true;
+  return false;
+}
+
