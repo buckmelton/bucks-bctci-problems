@@ -86,6 +86,13 @@ function matrixMultiply(a: number[][], b: number[][]): number[][] {
   return res;
 }
 
+/*
+Complexity:
+Time: We process the number of rows of A times the number of columns of B, time the number of columns of A.  If the matrix is square, this would be O(N^3)
+Space: We create an N * M matrix of extra space, plus a constant number of array index variables, so space complexity
+is O(N * M)
+*/
+
 let A = [
   [1, 2],
   [3, 4]
