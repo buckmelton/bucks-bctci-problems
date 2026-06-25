@@ -77,3 +77,22 @@ def two_array_two_sum(s_arr, u_arr)
   end
   return [-1, -1]
 end
+
+# Example 1:
+sorted_arr = [-5, -4, -1, 4, 6, 6, 7]
+unsorted_arr = [-3, 7, 18, 4, 6]
+p two_array_two_sum(sorted_arr, unsorted_arr)
+# Output: [1, 3]
+
+# Example 2:
+sorted_arr = [1, 2, 3]
+unsorted_arr = [1, 2, 3]
+p two_array_two_sum(sorted_arr, unsorted_arr)
+# Output: [-1, -1]
+
+# Example 3:
+sorted_arr = [-2, 0, 1, 2]
+unsorted_arr = [0, 2, -2, 4]
+p two_array_two_sum(sorted_arr, unsorted_arr)
+# Output: [0, 1]
+
