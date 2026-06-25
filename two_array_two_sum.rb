@@ -39,3 +39,41 @@ The space complexity: we only have an index pointing into the unsorted array,
 3 indices for the binary search pointing into the sorted array, and the 2-element result array.
 All of these are constant size, so space complexity is O(1), as requested.
 =end
+
+def find_complement(arr, target)
+  # define is_before(val)
+  # we don't need a full is_before here because we have a simple int array
+
+  # set l to first index, r to last index
+  l = 0
+  r = arr.length - 1
+  # edge cases: no range, l after all vals, r before all vals
+  if l == r
+    return l if arr[l] == target
+    return nil
+  end
+
+  # while l and r aren't next to each other, keep moving one of them
+  # to the middle
+  while r - l > 1 do
+    mid = (r + l) / 2
+    if target < arr[mid]
+      r = mid
+    else
+      l = mid
+    end
+  end
+
+  # Either l or r is at the target, or the target isn't found
+  return l if arr[l] == target
+  return r if arr[r] == target
+  return nil
+end
+
+def two_array_two_sum(s_arr, u_arr)
+  u_arr.each_with_index do |elt, i|
+    comp_idx = find_complement(s_arr, elt * -1)
+    return [comp_idx, i] if comp_idx != nil
+  end
+  return [-1, -1]
+end
