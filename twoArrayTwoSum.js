@@ -32,3 +32,9 @@
 Idea:
 For each element in the unsorted array, perform a binary search on the sorted array for the 0 complement and return the indices if we find it.  If we don't, return [-1, -1].
 */
+
+/*
+The time cmplexity for unsorted array length M and sorted array length N is O(M log N)
+we go through each of the M unsorted elements and for each do a log M binary search, and for space complexity
+the only extra space is the unsorted array index and the 3 pointers indices for the sorted array binary search, which is O(1) as requested.
+*/
