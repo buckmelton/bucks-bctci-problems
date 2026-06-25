@@ -27,3 +27,8 @@
 // - `sorted_arr` is sorted in ascending order
 // - The arrays have no duplicates
 // - Use `O(1)` _extra space_ and do not modify the input
+
+/*
+Idea:
+For each element in the unsorted array, perform a binary search on the sorted array for the 0 complement and return the indices if we find it.  If we don't, return [-1, -1].
+*/
