@@ -32,4 +32,10 @@
 Approach:
 For each element of the unsorted array, perform a binary search on the sorted array to see if a 0 complement exists.
 If it does, return it.  If it doesn't, return [-1, -1].
+
+The time complexity: we go through the M elements of the unsorted array.
+For each of the M elements, we do a log N search on the sorted array with length N.  So time complexity is O(M log N).
+The space complexity: we only have an index pointing into the unsorted array,
+3 indices for the binary search pointing into the sorted array, and the 2-element result array.
+All of these are constant size, so space complexity is O(1), as requested.
 =end
