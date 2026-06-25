@@ -27,3 +27,9 @@
 # - `sorted_arr` is sorted in ascending order
 # - The arrays have no duplicates
 # - Use `O(1)` _extra space_ and do not modify the input
+
+=begin
+Approach:
+For each element of the unsorted array, perform a binary search on the sorted array to see if a 0 complement exists.
+If it does, return it.  If it doesn't, return [-1, -1].
+=end
