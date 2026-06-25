@@ -52,7 +52,7 @@ function findComplement(arr, target) {
   if (arr[l] > target) return null;
   if (arr[r] < target) return null;
   let mid;
-  while (r-1 > l) {
+  while (r-l > 1) {
     mid = Math.floor((l+r)/2);
     if (target > arr[mid]) {
       l = mid;
