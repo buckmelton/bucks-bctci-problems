@@ -38,3 +38,46 @@ The time cmplexity for unsorted array length M and sorted array length N is O(M 
 we go through each of the M unsorted elements and for each do a log M binary search, and for space complexity
 the only extra space is the unsorted array index and the 3 pointers indices for the sorted array binary search, which is O(1) as requested.
 */
+
+function findComplement(arr, target) {
+  let l = 0;
+  let r = arr.length - 1;
+  if (l == r) {
+    if (arr[l] == target) {
+      return l;
+    } else {
+      return null;
+    }
+  }
+  if (arr[l] > target) return null;
+  if (arr[r] < target) return null;
+  let mid;
+  while (r-1 > l) {
+    mid = Math.floor((l+r)/2);
+    if (target > arr[mid]) {
+      l = mid;
+    } else {
+      r = mid;
+    }
+  }
+  if (arr[l] == target) {
+    return l;
+  } else {
+    if (arr[r] == target) {
+      return r;
+    } else {
+      return null;
+    }
+  }
+}
+
+function twoArrayTwoSum(sArr, uArr) {
+  let compIndex;
+  for (let i = 0; i < uArr.length; i++) {
+    compIndex = findComplement(sArr, -1 * uArr[i]);
+    if (compIndex != null) {
+      return [compIndex, i];
+    }
+  }
+  return [-1, -1];
+}
