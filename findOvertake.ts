@@ -29,4 +29,13 @@ Approach:
 Find the transition point in arrays where p1[i] goes from > p2[i] to < p2[i]. Since
 the arrays are monotonically increasing, that means they are sorted and we can do
 this with binary search.
+
+Complexity:
+Time complexity: we're doing a binary search and no further processing that varies
+with N, so the complexity is that of binary search, which is O(log N), where N
+is the size of the arrays.
+Space complexity: the only extra space we use is for array index pointers into the
+arrays for the binary search, which are constant size => O(1).
 */
+
+
