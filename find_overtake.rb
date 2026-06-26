@@ -46,3 +46,33 @@ Space complexity is O(1) since the only extra space we're using is for array ind
 pointers for the binary search for left, right and middle
 
 =end
+
+def find_overtake(p1, p2)
+  # define predicate that tests whether cur val is before or after transition point
+  # we're before the transition point if p1 is still leading p2
+  is_before = ->(second) { p1[second] > p2[second] }
+
+  # set l and r to beginning and end of range
+  l, r = 0, p1.length - 1
+
+  # handle edge cases: no range, l is to the right of transition point,
+  # r is to the left of transition point
+  # From the definition and constraints we know none of these edge cases hold:
+  # array.length >= 2 guarantees a range, and we're told that the transition
+  # point exists in the range.
+
+  # search for transition point until r and l are next to each other
+  while r - l > 1 do
+    # ruby integer division automatically applies 'floor'
+    mid = (r + l) / 2
+    if is_before.call(mid)
+      l = mid
+    else
+      r = mid
+    end
+  end
+
+  # l and r are next to each other, we've found the transition point,
+  # r points to where p2 overtakes p1
+  return r
+end
