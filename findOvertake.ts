@@ -38,4 +38,24 @@ Space complexity: the only extra space we use is for array index pointers into t
 arrays for the binary search, which are constant size => O(1).
 */
 
+function findOvertake(p1: number[], p2: number[]): number {
+  const isBefore = (second: number) => p1[second] > p2[second];
+
+  let l: number = 0;
+  let r: number = p1.length;
+
+  let mid: number;
+  while (r - l > 1) {
+    mid = Math.floor( ( r + l ) / 2 );
+    if ( isBefore(mid) ) {
+      l = mid;
+    } else {
+      r = mid;
+    }
+  }
+
+  return r;
+}
+
+
 
