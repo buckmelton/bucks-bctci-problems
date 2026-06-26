@@ -39,4 +39,10 @@ pointer and a known False pointer, I completely eliminate off-by-one errors and
 infinite loops, allowing me to solve any binary search variation with the exact same
 layout.
 
+Complexity:
+Time complexity is O(log N), where N is the size of the arrays, since we are simply
+doing a binary search, which is O(log N), and no additional processing.
+Space complexity is O(1) since the only extra space we're using is for array index
+pointers for the binary search for left, right and middle
+
 =end
