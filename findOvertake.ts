@@ -23,3 +23,10 @@ p1 and p2 are strictly increasing
 There is exactly one point where p2 overtakes p1
 
 */
+
+/*
+Approach:
+Find the transition point in arrays where p1[i] goes from > p2[i] to < p2[i]. Since
+the arrays are monotonically increasing, that means they are sorted and we can do
+this with binary search.
+*/
