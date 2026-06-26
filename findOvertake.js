@@ -38,4 +38,40 @@ The time complexity is that of a binary search:  O(log N).
 The space complexity is that for the three binary search array pointers, which is constant, so O(1).
 */
 
+function findOvertake(p1, p2) {
+
+  // Define function isBefore
+  function isBefore(second) {
+    return p1[second] > p2[second];
+  }
+
+  // Set l to first index of range, r to last index of range
+  let l = 0;
+  let r = p1.length - 1;
+
+  // Take care of edge cases
+  // No range:
+  // By the constraints, we know there is always a range
+  // All values are to left of range:
+  // By the definition, we know p2 always starts behind and overtakes p1
+  // All values to right of the range:
+  // By the definition, we know p2 always starts behind and overtakes p1
+
+  // Find the transition point, where l and r are next to each other
+  let mid;
+  while (r - l > 1) {
+    mid = Math.floor((r+l)/2);
+    if (isBefore(mid)) {
+      l = mid;
+    } else {
+      r = mid;
+    }
+  }
+  
+  // From the definition and contraints, we know that r must be
+  // the one index where p2 overtakes p1
+  return r;
+}
+
+
 
