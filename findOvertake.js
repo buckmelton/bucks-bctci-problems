@@ -1,6 +1,8 @@
 // # Race Overtaking
 
-// You are given two arrays of positive integers, `p1` and `p2`, representing players in a racing game. The two arrays are sorted, non-empty, and have the same length, `n`. The `i`-th element of each array corresponds to where that player was on the track at the `i`-th second of the race. We know that:
+/* You are given two arrays of positive integers, `p1` and `p2`, representing players in a racing game.
+The two arrays are sorted, non-empty, and have the same length, `n`. The `i`-th element of each array
+corresponds to where that player was on the track at the `i`-th second of the race. We know that:*/
 
 // 1. Player 1 started ahead (`p1[0] > p2[0]`)
 // 2. Player 2 overtook player 1 _once_.
@@ -25,3 +27,7 @@
 // - `0 ≤ p1[i], p2[i] ≤ 10^9`
 // - `p1` and `p2` are strictly increasing
 // - There is exactly one point where `p2` overtakes `p1`
+
+/*
+Approach:
+We need to find the transition point i where p1[i] > p2[i] and  p1[i+1] < p2[i+1].  We can do this with binary search, starting from the middle i.  If that i yields p1[i] still > p2[i], we know the transition point is to the right, otherwise the transition is to left or here.  We proceed until we find the transition point.
