@@ -76,3 +76,23 @@ def find_overtake(p1, p2)
   # r points to where p2 overtakes p1
   return r
 end
+
+# Example 1: p1 = [2, 4, 6, 8, 10], p2 = [1, 3, 5, 9, 11]
+# Output: 3. At index 3, p2 (9) becomes greater than p1 (8).
+p1 = [2, 4, 6, 8, 10]
+p2 = [1, 3, 5, 9, 11]
+p find_overtake(p1, p2)
+
+
+# Example 2: p1 = [2, 3, 4, 5, 6], p2 = [1, 2, 3, 6, 7]
+# Output: 3. At index 3, p2 (6) becomes greater than p1 (5).
+p1 = [2, 3, 4, 5, 6]
+p2 = [1, 2, 3, 6, 7]
+p find_overtake(p1, p2)
+
+
+# Example 3: p1 = [3, 4, 5], p2 = [2, 5, 6]
+# Output: 1. At index 1, p2 (5) becomes greater than p1 (4).
+p1 = [3, 4, 5]
+p2 = [2, 5, 6]
+p find_overtake(p1, p2)
