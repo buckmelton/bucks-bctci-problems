@@ -25,3 +25,18 @@
 # - `0 ≤ p1[i], p2[i] ≤ 10^9`
 # - `p1` and `p2` are strictly increasing
 # - There is exactly one point where `p2` overtakes `p1`
+
+=begin
+Approach:
+Find the transition point where p1[i] goes from being > p2[i] (leading) to being
+< p2[i] (trailing).  Use binary search to do this.
+
+I'll use a generalized binary search recipe based on a transition-point invariant.
+Instead of searching for a specific value, I define a boolean predicate, is_before(),
+to split the search space into a continuous sequence of True values followed by
+False values. By keeping the search range strictly bounded between a known True
+pointer and a known False pointer, I completely eliminate off-by-one errors and
+infinite loops, allowing me to solve any binary search variation with the exact same
+layout.
+
+=end
