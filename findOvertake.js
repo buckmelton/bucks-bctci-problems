@@ -30,4 +30,12 @@ corresponds to where that player was on the track at the `i`-th second of the ra
 
 /*
 Approach:
-We need to find the transition point i where p1[i] > p2[i] and  p1[i+1] < p2[i+1].  We can do this with binary search, starting from the middle i.  If that i yields p1[i] still > p2[i], we know the transition point is to the right, otherwise the transition is to left or here.  We proceed until we find the transition point.
+We need to find the transition point i where p1[i] > p2[i] and  p1[i+1] < p2[i+1].  We can do this with binary search,
+starting from the middle i.  If that i yields p1[i] still > p2[i], we know the transition point is to the right, otherwise
+the transition is to left or here.  We proceed until we find the transition point.
+
+The time complexity is that of a binary search:  O(log N).
+The space complexity is that for the three binary search array pointers, which is constant, so O(1).
+*/
+
+
