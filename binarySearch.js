@@ -79,4 +79,45 @@ The only extra space we're using is index pointers into the array, which are
 constant space, so space complexity is O(1).
 */
 
+let arr = [-2, 0, 3, 4, 7, 9, 11];
+let target = 3;
+console.log(sortedSearch(arr, target));
+// Output: 2. The target 3 is at index 2.
+
+arr = [-2, 0, 3, 4, 7, 9, 11];
+target = 2;
+console.log(sortedSearch(arr, target));
+// Output: -1. The target 2 is not in the array.
+
+arr = [1, 2, 3];
+target = 1;
+console.log(sortedSearch(arr, target));
+// Output: 0. The target 1 is at index 0.
+
+arr = [-2, 0, 3, 4, 7, 9, 11];
+target = -3;
+console.log(sortedSearch(arr, target));
+// Output: -1. The target -3 is before the array.
+
+arr = [-2, 0, 3, 4, 7, 9, 11];
+target = 20;
+console.log(sortedSearch(arr, target));
+// Output: -1. The target 20 is after the array.
+
+arr = [-2, 0, 3, 4, 7, 9, 11];
+target = 11;
+console.log(sortedSearch(arr, target));
+// Output: 6. The target 11 the last element in the array.
+
+arr = [11];
+target = 11;
+console.log(sortedSearch(arr, target));
+// Output: 0. The target 11 is the only element in the array.
+
+arr = [11];
+target = 2;
+console.log(sortedSearch(arr, target));
+// Output: -1. The target 2 is not in the single-element array.
+
+
 
