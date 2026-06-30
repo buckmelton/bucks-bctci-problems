@@ -70,5 +70,13 @@ function sortedSearch(arr, target) {
   }
 }
 
+/*
+Time complexity:
+We are performing a simple binary search, so time complexity is O(log N).
+
+Space complexity:
+The only extra space we're using is index pointers into the array, which are
+constant space, so space complexity is O(1).
+*/
 
 
