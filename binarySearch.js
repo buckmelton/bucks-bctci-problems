@@ -35,4 +35,40 @@ each other, halving search region at each point.  In this way we are guaranteed
 that either l or r will point to the target, or the target does not exist.
 */
 
+function sortedSearch(arr, target) {
+  // implement isBefore here, which returns whether the passed value
+  // is before or after the target value.
+  function isBefore(val) {
+    return val < target;
+  }
+
+  // Handle edge cases: no range, target < left, target > right
+  if (arr.length == 0) return -1;
+  if (target < arr[0]) return -1;
+  if (target > arr[arr.length-1]) return -1;
+
+  // binary search until l and r are next to each other
+  let l = 0;
+  let r = arr.length-1;
+  let mid;
+  while (r - l > 1) {
+    mid = Math.floor((r + l) / 2);
+    if (isBefore(arr[mid])) {
+      l = mid;
+    } else {
+      r = mid;
+    }
+  }
+  if (arr[r] == target) {
+    return r;
+  } else {
+    if (arr[l] == target) {
+      return l;
+    } else {
+      return -1;
+    }
+  }
+}
+
+
 
